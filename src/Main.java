@@ -50,5 +50,15 @@ public class Main {
         Map<String, List<Funcionario>> funcionariosPorFuncao = funcionarios.stream()
                 .collect(Collectors.groupingBy(Funcionario::getFuncao));
 
+        // 3.6 – Imprimir os funcionários, agrupados por função
+        System.out.println("\n--- Funcionários agrupados por função ---");
+        funcionariosPorFuncao.forEach((funcao, lista) -> {
+            System.out.println("Função: " + funcao);
+            lista.forEach(f -> System.out.printf("  - Nome: %s, Data Nascimento: %s, Salário: %,.2f%n",
+                    f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario()));
+        });
+
+
+
     }
 }
