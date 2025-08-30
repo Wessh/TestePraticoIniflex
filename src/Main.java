@@ -1,9 +1,11 @@
 import model.Funcionario;
+import model.Pessoa;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -63,5 +65,12 @@ public class Main {
         funcionarios.stream()
                 .filter(f -> f.getDataNascimento().getMonthValue() == 10 || f.getDataNascimento().getMonthValue() == 12)
                 .forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s%n", f.getNome(), f.getDataNascimento().format(dateFormatter)));
+
+        // 3.9 – Imprimir o funcionário com a maior idade
+        System.out.println("\n--- Funcionário com a maior idade ---");
+        funcionarios.stream()
+                .min(Comparator.comparing(Pessoa::getDataNascimento))
+                .ifPresent(funcionarioMaisVelho -> System.out.printf("Nome: %s, Idade: %d anos%n", funcionarioMaisVelho.getNome(),
+                        LocalDate.now().getYear() - funcionarioMaisVelho.getDataNascimento().getYear()));
     }
 }
