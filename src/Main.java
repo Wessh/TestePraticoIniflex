@@ -58,7 +58,10 @@ public class Main {
                     f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario()));
         });
 
-
-
+        // 3.8 – Imprimir os funcionários que fazem aniversário no mês 10 e 12.
+        System.out.println("\n--- Aniversariantes de Outubro e Dezembro ---");
+        funcionarios.stream()
+                .filter(f -> f.getDataNascimento().getMonthValue() == 10 || f.getDataNascimento().getMonthValue() == 12)
+                .forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s%n", f.getNome(), f.getDataNascimento().format(dateFormatter)));
     }
 }
