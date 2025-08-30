@@ -72,5 +72,13 @@ public class Main {
                 .min(Comparator.comparing(Pessoa::getDataNascimento))
                 .ifPresent(funcionarioMaisVelho -> System.out.printf("Nome: %s, Idade: %d anos%n", funcionarioMaisVelho.getNome(),
                         LocalDate.now().getYear() - funcionarioMaisVelho.getDataNascimento().getYear()));
+
+        // 3.10 – Imprimir a lista de funcionários por ordem alfabética.
+        System.out.println("\n--- Funcionários em ordem alfabética ---");
+        funcionarios.stream()
+                .sorted(Comparator.comparing(Pessoa::getNome))
+                .forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                        f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario(), f.getFuncao()));
+
     }
 }
