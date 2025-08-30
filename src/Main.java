@@ -87,5 +87,13 @@ public class Main {
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
         System.out.printf("Total de Salários: %,.2f%n", totalSalarios);
 
+        // 3.12 – Imprimir quantos salários mínimos ganha cada funcionário
+        System.out.println("\n--- Salários Mínimos por Funcionário ---");
+        BigDecimal salarioMinimo = new BigDecimal("1212.00");
+        funcionarios.forEach(f -> {
+            BigDecimal salariosMinimos = f.getSalario().divide(salarioMinimo, 2, BigDecimal.ROUND_HALF_UP);
+            System.out.printf("Nome: %s, Salários Mínimos: %,.2f%n", f.getNome(), salariosMinimos);
+        });
+
     }
 }
