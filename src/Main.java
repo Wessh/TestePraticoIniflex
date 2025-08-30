@@ -80,5 +80,12 @@ public class Main {
                 .forEach(f -> System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
                         f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario(), f.getFuncao()));
 
+        // 3.11 – Imprimir o total dos salários dos funcionários.
+        System.out.println("\n--- Total dos Salários ---");
+        BigDecimal totalSalarios = funcionarios.stream()
+                .map(Funcionario::getSalario)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        System.out.printf("Total de Salários: %,.2f%n", totalSalarios);
+
     }
 }
