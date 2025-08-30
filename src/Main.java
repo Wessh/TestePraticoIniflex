@@ -35,5 +35,14 @@ public class Main {
                     f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario(), f.getFuncao());
         });
 
+        // 3.4 – Os funcionários receberam 10% de aumento de salário
+        funcionarios.forEach(f -> f.setSalario(f.getSalario().multiply(new BigDecimal("1.10"))));
+
+        System.out.println("\n--- Funcionários com 10% de aumento ---");
+        funcionarios.forEach(f -> {
+            System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                    f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario(), f.getFuncao());
+        });
+
     }
 }
