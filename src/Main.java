@@ -2,6 +2,7 @@ import model.Funcionario;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,14 @@ public class Main {
 
         // 3.2 – Remover o funcionário “João” da lista.
         funcionarios.removeIf(f -> f.getNome().equals("João"));
+
+        // 3.3 – Imprimir todos os funcionários com todas suas informações
+        System.out.println("\n--- Todos os Funcionários ---");
+        DateTimeFormatter dateFormatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        funcionarios.forEach(f -> {
+            System.out.printf("Nome: %s, Data Nascimento: %s, Salário: %,.2f, Função: %s%n",
+                    f.getNome(), f.getDataNascimento().format(dateFormatter), f.getSalario(), f.getFuncao());
+        });
 
     }
 }
